@@ -1,0 +1,25 @@
+
+{{ form.1.name }}<br>
+
+{% for field in form %}
+    <p>
+
+        {% if field.name == 'url' %}
+            <a href="{{ field.value }}" target="_blank">
+        {% endif %}
+
+        {{ field.label_tag }}
+        {% if field.name == 'login_pass' or field.name == 'login_name' %}
+            (click to copy)<br>
+            <input type="text" onclick="myFunction('{{ field.name }}')" id="{{ field.name }}" value="{{ field.value }}" readonly>
+        {% else %}
+            {{ field.value }}
+        {% endif %}
+
+        {% if field.name == 'url' %}
+            </a>
+        {% endif %}
+
+    </p>
+{% endfor %}
+<input type="hidden" name="ownerid" value="{{ user.id }}">

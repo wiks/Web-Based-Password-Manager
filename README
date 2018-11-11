@@ -1,0 +1,26 @@
+# Web-Based-Password-Manager
+
+## Description
+
+- Create a simple web-based password manager (Task-1)
+- Create extra functionality on top of Task-1 to share passwords with your friends (Task-2)
+- Focus on demonstrating your coding and architectural design skills. Show us what
+you’ve got!
+- Choice of language/framework/libraries is up to you - but please choose components
+that you could use to build a high quality, maintainable, high volume website and please
+don't use boilerplate, templates, starter packs - we want to read ​ your ​ code.
+
+## Installation
+
+- python manage.py makemigrations
+- python manage.py migrate
+- python manage.py tests
+- python manage.py runserver
+
+## Requirements
+
+- Django==2.1.3
+- djangorestframework==3.9.0
+- pytz==2018.7
+- selenium==3.141.0
+- urllib3==1.24.1

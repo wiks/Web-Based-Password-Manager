@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Task{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <h1>Task</h1>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" id="logout">logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" id="login">login</a> / <a href="{% url 'signup' %}" id="signup">signup</a>
+      {% endif %}
+      <hr>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <script>
+    function myFunction(element_id) {
+
+      var el = document.getElementById(element_id);
+      el.select();
+      document.execCommand("copy");
+      alert("Copied: " + el.value);
+    }
+    </script>
+
+  </body>
+</html>

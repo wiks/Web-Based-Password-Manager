@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
+
+  <br>
+  <br>
+
+  CACHE TRY: {{ mcach }}
+
+  <br>
+  <br>
+
+<style>
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+<form method="post">
+    {% csrf_token %}
+
+{% if owner_data.data %}
+<table class="tbl">
+    <thead>
+        <tr>
+            <th></th>
+            {% for field in owner_data.fields %}
+                <th>{{ field }}</th>
+            {% endfor %}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for instance in owner_data.data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            {% for field in instance %}
+                {% if forloop.counter > 1 %}
+                    <td>{{ field }}</td>
+                {% endif %}
+            {% endfor %}
+            <td>
+                 <button type="submit" name="show" value="{{ instance.0 }}">Show</button>
+                 <button type="submit" name="edit" value="{{ instance.0 }}">Edit</button>
+                 <button type="submit" name="delete" value="{{ instance.0 }}">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    ...there is nothing here yet<br>
+{% endif %}
+
+    <button type="submit" name="create">Add new</button>
+
+</form>
+
+{% endblock %}

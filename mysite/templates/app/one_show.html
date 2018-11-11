@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+
+    {% if title %}
+    <h2>{{ title }}</h2>
+    {% else %}
+    <h2>show one</h2>
+    {% endif %}
+
+    {% include 'app/piece_show_one.html' %}
+
+    {% if key %}
+    <p>This data is shared for a
+        {% if valid_mins %}
+            {{ valid_mins }}
+        {% else %}
+            few
+        {% endif %}
+        minutes with everybody who know link.<br>
+        The link is: "<a href="{% url 'shared' key %}" target="_blank">{% url 'shared' key %}</a>"<br>
+        {% if valid_to %}
+            Key is valid to {{ valid_to }}
+        {% endif %}
+    </p>
+    {% endif %}
+
+    <input type="hidden" name="loginpassid" value="{{ loginpassid }}">
+
+    {% if not hide_share_button %}
+    <button type="submit" name="share">Share</button>
+    {% endif %}
+
+    <button type="submit" name="cancel">OK</button>
+</form>
+
+{% endblock %}

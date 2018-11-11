@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <h2>delete one</h2>
+
+    {% include 'app/piece_show_one.html' %}
+
+    <p>Are you sure? Delete this above!?</p>
+
+    <button type="submit" name="delete">Delete</button>
+    <button type="submit" name="cancel">Cancel</button>
+</form>
+
+{% endblock %}
